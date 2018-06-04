@@ -1,0 +1,19 @@
+
+<div id = "post">
+  <%= form_for :post, url: posts_path do |f| %>
+    <p>タイトル<br>
+      <%= f.text_field :title %>
+    </p>
+    <p>記事内容<br>
+      <%= f.text_area :body %>
+    </p>
+
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>

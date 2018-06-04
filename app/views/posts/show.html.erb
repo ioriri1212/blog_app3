@@ -1,0 +1,27 @@
+<div id = "title" >
+  <div> <%= @post.created_at.strftime('%Y/%m/%d') %>
+    / 書いた人:
+    <%=  @post.user.email  %>
+    <h1><%= @post.title %></h1>
+  </div>
+</div>
+
+<div id = "content">
+  <h2><%= @post.body %></h2>
+</div>
+
+<div id="article_wrap">
+  <div id="sidebar">
+    <h2>★PV数ランキング</h2>
+      <ul>
+        <% @ranks.each do |rank| %>
+          <li>
+            <%= link_to(rank.title, "/posts/#{rank.id}") %>
+            <span>(<%= REDIS.zscore "posts/daily/#{Date.today.to_s}","#{rank.id}" %>PV)</span>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+  <div class="clear"></div>
+</div>

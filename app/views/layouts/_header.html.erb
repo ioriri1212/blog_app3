@@ -1,0 +1,24 @@
+<header>
+    <p id="logo"><a href="/">RailsCamp<span>Blog</span></a></p>
+    <!-- user_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
+<nav>
+    <% if user_signed_in? %>
+      <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+      <!-- *_path はUserモデルを作成したときに、
+        deviseにより自動で作成されてますので、rake routesで確認できます -->
+        <ul>
+          <li><%= link_to "トップ", "/" %></li>
+          <li><%= link_to '新規投稿', new_post_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      </ul>
+        <% else %>
+        <ul>
+          <li><%= link_to "トップ", "/" %></li>
+          <li><%= link_to "ユーザー登録", new_user_registration_path %></li>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+      </ul>
+        <% end %>
+
+</nav>
+    <div class="clear"></div>
+</header>

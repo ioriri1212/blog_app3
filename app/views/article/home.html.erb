@@ -1,0 +1,29 @@
+<div id="article_wrap">
+  <% @posts.each do |post| %>
+  <div>
+    <li>
+      <h2><%= link_to post.title, post_path(post) %></h2>
+      <p><%= post.created_at.strftime('%Y/%m/%d') %></p>
+      <% if user_signed_in? %>
+      <h4>
+      <%= link_to "編集", edit_post_path(post) %>
+      <%= link_to "削除", post_path(post), method: :delete %>
+      </h4>
+    </li>
+  <% end %>
+  </div>
+  <% end %>
+    <div id="content">
+      <ui>
+<%= render 'shared/feed' %>
+      </ui>
+
+    </div>
+
+
+    <div id="sidebar">
+
+        <h2>★PV数ランキング</h2>
+
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,8 @@
+<h2>★PV数ランキング</h2>
+<% @ranking_articles.each do |ranking_article| %>
+<ul>
+<li>
+  <%= link_to ranking_article.title, "/posts/#{ranking_article.id}" %>(<%= REDIS.get "posts/#{ranking_article.id}" %>PV)
+</li>
+</ul>
+<% end %>
